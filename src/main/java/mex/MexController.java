@@ -18,7 +18,7 @@ public class MexController {
 
         String result = text.replaceAll("\\s{2,}", " ");
 
-        String reversed = IntStream.range(1, text.length() + 1)
+        String reversed = IntStream.range(1, result.length() + 1)
                 .mapToObj(i -> result.length() - i)
                 .map(text::charAt)
                 .map(Object::toString)

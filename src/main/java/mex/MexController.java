@@ -12,11 +12,13 @@ import static java.util.stream.Collectors.joining;
 public class MexController {
 
     private static final String VOWELS = "aeiouyáéíóúůýäëïöüÿ";
+    private static final String REPLACE_PATTERN = "\\s{2,}";
+    private static final String REPLACE_TO = " ";
 
     @RequestMapping("/mex")
     public Mex mex(@RequestParam(value = "text", defaultValue = "xem") String text) {
 
-        String result = text.replaceAll("\\s{2,}", " ");
+        String result = text.replaceAll(REPLACE_PATTERN, REPLACE_TO);
 
         String reversed = IntStream.range(1, result.length() + 1)
                 .mapToObj(i -> result.length() - i)

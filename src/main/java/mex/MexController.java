@@ -24,7 +24,7 @@ public class MexController {
                 .mapToObj(i -> result.length() - i)
                 .map(text::charAt)
                 .map(Object::toString)
-                .map(s -> VOWELS.contains(s) ? s.toUpperCase() : s)
+                .map(s -> VOWELS.contains(s) ? s.toUpperCase() : s.toLowerCase())
                 .collect(joining(""));
 
         return new Mex(reversed);

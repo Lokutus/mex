@@ -14,16 +14,16 @@ public class MexController {
     private static final String VOWELS = "aeiouyáéíóúůýäëïöüÿ";
 
     @RequestMapping("/mex")
-    public Mex mex(@RequestParam(value="text", defaultValue="xem") String text) {
+    public Mex mex(@RequestParam(value = "text", defaultValue = "xem") String text) {
+
+        String result = text.replaceAll("\\s{2,}", " ");
 
         String reversed = IntStream.range(1, text.length() + 1)
-                .mapToObj(i -> text.length() - i)
+                .mapToObj(i -> result.length() - i)
                 .map(text::charAt)
                 .map(Object::toString)
                 .map(s -> VOWELS.contains(s) ? s.toUpperCase() : s)
                 .collect(joining(""));
-
-//        System.out.println(reversed);
 
         return new Mex(reversed);
     }
